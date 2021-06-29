@@ -1,0 +1,667 @@
+<html>
+  <head>
+    <title>Programming Praxis in C</title>
+    <meta content="">
+    <style></style>
+  </head>
+  <body>
+
+    <h1>Programming Praxis in C</h1>
+    <p>
+        Programming exercises in C language. Solutions to problems presented on blog: <a href="http://programmingpraxis.com">http://programmingpraxis.com</a>.
+
+        Compile using gcc and make. Purpose and usage of each program is described below.
+    </p>
+
+    <h2><a name="top">Index</a></h2>
+    <ol>
+        <li><a href="#rpn"       >RPN calculator.                  </a></li>
+        <li><a href="#sieve"     >Sieve of Eratosthenes.           </a></li>
+        <li><a href="#bingo"     >Bingo.                           </a></li>
+        <li><a href="#sudoku"    >Sudoku.                          </a></li>
+        <li><a href="#flavius"   >Flavius Josephus.                </a></li>
+        <li><a href="#rot13"     >ROT13.                           </a></li>
+        <li><a href="#apartment" >Apartment.                       </a></li>
+        <li><a href="#pii"       >Digits of pi.                    </a></li>
+        <li><a href="#quine"     >Quine.                           </a></li>
+        <li><a href="#easter"    >Mardi Gras.                      </a></li>
+        <li><a href="#shaney"    >Mark V. Shaney.                  </a></li>
+        <li><a href="#vigenere"  >Vigenere.                        </a></li>
+        <li><a href="#roman"     >Roman numbers.                   </a></li>
+        <li><a href="#words"     >Word frequencies.                </a></li>
+        <li><a href="#friday"    >Friday, the Thirteenth.          </a></li>
+        <li><a href="#csv"       >Comma-Separated Values.          </a></li>
+        <li><a href="#dodgson"   >Dodgson's Doublets.              </a></li>
+        <li><a href="#chop"      >Binary Chop.                     </a></li>
+        <li><a href="#turing"    >Turing Machine Simulator.        </a></li>
+        <li><a href="#railfence" >Rail-Fence Cipher.               </a></li>
+        <li><a href="#multiply"  >Multiplication on Turing Machine.</a></li>
+        <li><a href="#pancake"   >Pancake-flipping sorting.        </a></li>
+        <li><a href="#anagram"   >Anagram finder.                  </a></li>
+        <li><a href="#primes"    >Primes puzzle.                   </a></li>
+        <li><a href="#spellcheck">Spell-check.                     </a></li>
+        <li><a href="#bloomspell">Bloom filter spell checker.      </a></li>
+        <li><a href="#hyphen"    >Hyphenation.                     </a></li>
+        <li><a href="#morse"     >Morse code.                      </a></li>
+        <li><a href="#primality" >Primality checking.              </a></li>
+        <li><a href="#pqueue"    >Priority queue.                  </a></li>
+        <li><a href="#wfactor"   >Wheel factorization.             </a></li>
+        <li><a href="#loan"      >Loan amortization.               </a></li>
+        <li><a href="#automata"  >Cellular automata.               </a></li>
+        <li><a href="#fermat"    >Fermat's factorization.          </a></li>
+        <li><a href="#palindrome">Palindromic number finder.       </a></li>
+        <li><a href="#wsearch"   >Word search solver.              </a></li>
+        <li><a href="#columnar"  >Double transposition cipher.     </a></li>
+        <li><a href="#piglatin"  >Pig Latin.                       </a></li>
+        <li><a href="#tenarytree">Tenary Search Tree.              </a></li>
+        <li><a href="#lcs"       >Longest Common Subsequence.      </a></li>
+        <li><a href="#feynmann"  >Feynmann's puzzle.               </a></li>
+    </ol>
+
+    <h2><a name="rpn">1. RPN calculator.</a></h2>
+    <p>
+    Command line calculator using reverse polish notation.<br/><br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/02/19/rpn-calculator/">http://programmingpraxis.com/2009/02/19/rpn-calculator/</a><br/>
+    Build: make rpn<br/>
+    Run: ./bin/rpn<br/>
+    <br/>
+    Calculator supports operations on integers and floating point numbers. Precision is limited to that of <b>float</b> type.
+    Available operations: + (addition), - (substraction), * (multiplication), / (division). Numbers use decimal notation, use period or comma as
+    decimal point and blanks (e.g. spaces) as token separators. Type 'q' to quit.
+    Example usage:<br/>
+    Input: <i>&gt;19 2.14 + 4.5 2 4.3 / - *</i><br/>
+    Output:
+    <pre>
+    plus(19, 2.14) = 21.14
+    div(2, 4.3) = 0.465116
+    minus(4.5, 0.465116) = 4.03488
+    mul(21.14, 4.03488) = 85.2974
+
+    =    85.2974
+    </pre>
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="sieve">2. Sieve of Eratosthenes.</a></h2>
+    <p>
+    Implementation of algorithm for finding prime numbers.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/02/19/sieve-of-eratosthenes/">http://programmingpraxis.com/2009/02/19/sieve-of-eratosthenes/</a><br/>
+    Build: make sieve<br/>
+    Run: ./bin/sieve<br/>
+    <br/>
+    Program will look for and count prime numbers from 2 to N. N is currently a constant equal to 15485863.
+    After calculation is done, program will write number of found primes and exit.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+
+    <h2><a name="bingo">3. Bingo.</a></h2>
+    <p>
+    Bingo game simulation.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/02/19/bingo/">http://programmingpraxis.com/2009/02/19/bingo/</a><br/>
+    Build: make bingo<br/>
+    Run: ./bin/bingo<br/>
+    <br/>
+    Program tries to find answers to questions: 1) what is the average number of calls required for single card to achieve a bingo;
+    2) what is the average length of the game with 500 cards playing.<br/>
+    To do this, program simulates the bingo game a few thousand times and calculates average number of calls.<br/>
+    The results are two numbers printed on standard output.
+    <br/>
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="sudoku">4. Sudoku.</a></h2>
+    <p>
+    Sudoku puzzle solver.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/02/19/sudoku/">http://programmingpraxis.com/2009/02/19/sudoku/</a><br/>
+    Build: make sudoku<br/>
+    Run: ./bin/sudoku PUZZLE_FILE<br/>
+    <br/>
+    Program solves sudoku puzzles. It requires a file name as command line argument. The puzzle to be solved is read from specified file.
+    The file should contain 81 digits (0-9) separated by blanks. The numbers should be in order they appear on the grid: from top to bottom, from
+    left to right. Use zero (0) to represent empty cells. Excessive spaces and line breaks are ignored.<br/>
+    Example puzzle is provided in dat/sudoku.txt<br/>
+    Program prints puzzle and the solution to the standard output.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="flavius">5. Flavius Josephus.</a></h2>
+    <p>
+    Finds order of soldier killings in Flavius Josephuses story.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/02/19/flavius-josephus/">http://programmingpraxis.com/2009/02/19/flavius-josephus/</a><br/>
+    Build: make flavius<br/>
+    Run: ./bin/flavius<br/>
+    <br/>
+    Program simulates ancient story: 41 people stand in circle, every third one is being killed, who will be the last one to stay alive?<br/>
+    The order of killings is written out as program output. Numbers mean position of person on the circle, counting from 0.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="rot13">6. ROT13.</a></h2>
+    <p>
+    Interactive ROT13 encryption/decryption.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/02/20/rot13/">http://programmingpraxis.com/2009/02/20/rot13/</a><br/>
+    Build: make rot13<br/>
+    Run: ./bin/rot13<br/>
+    <br/>
+    Program encodes each line of input using Caesar cypher and writes result to output. Only small and capital latin letters are changed.
+    If encrypted message is written as input it will be decrypted. Enter EOF (Ctrl+D) to exit.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="apartment">7. Apartment.</a></h2>
+    <p>
+    Finding of solution for logic puzzle (where everyone lives based on given constraints).<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/02/20/multiple-dwellings/">http://programmingpraxis.com/2009/02/20/multiple-dwellings/</a><br/>
+    Build: make apartment<br/>
+    Run: ./bin/apartment<br/>
+    <br/>
+    Original puzzle:<br/>
+ &quot;Baker, Cooper, Fletcher, Miller and Smith live on different floors of an apartment house that contains only five floors.
+ Baker does not live on the top floor. Cooper does not live on the bottom floor. Fletcher does not live on either the top or the bottom floor.
+ Miller lives on a higher floor than does Cooper. Smith does not live on a floor adjacent to Fletcher’s.
+ Fletcher does not live on a floor adjacent to Cooper’s. Where does everyone live?&quot;
+    <br/><br/>
+    Solution is written as program output.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="pii">8. Digits of pi.</a></h2>
+    <p>
+    Program for calculating first 1000 digits of pi.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/02/20/the-digits-of-pi/">http://programmingpraxis.com/2009/02/20/the-digits-of-pi/</a><br/>
+    Build: make pii<br/>
+    Run: ./bin/pii<br/>
+    <br/>
+    Program uses spigot algorithm to caluculate 1000 first digits of pi. The digits are written to standard output.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="quine">9. Quine.</a></h2>
+    <p>
+    Self-reproducing program.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/02/20/a-self-reproducing-program/">http://programmingpraxis.com/2009/02/20/a-self-reproducing-program/</a><br/>
+    Build: make quine<br/>
+    Run: ./bin/quine<br/>
+    <br/>
+    When ran, program will write to standard output exact copy of its source.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="easter">10. Mardi Gras.</a></h2>
+    <p>
+    Calculates date of Mardi Gras festival.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/02/24/mardi-gras/">http://programmingpraxis.com/2009/02/24/mardi-gras/</a><br/>
+    Build: make easter<br/>
+    Run: ./bin/easter YEAR<br/>
+    <br/>
+    Program uses moon phase calculation to establish date of Easter in the year given as program argument. Then it writes out the date of Mardi Gras in that year.
+    <br/><br/><span style="color:red">BUG: the program returns values that are close, but not the same as known, correct answer.</span>
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="shaney">11. Mark V. Shaney.</a></h2>
+    <p>
+    Generates paragraphs of text that almost makes sense.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/02/27/mark-v-shaney/">http://programmingpraxis.com/2009/02/27/mark-v-shaney/</a><br/>
+    Build: make shaney<br/>
+    Run: ./bin/shaney COMMAND [FILENAME] ...<br/>
+    <br/>
+    Program is able to generate short paragraphs based on vocabulary taken from teaching texts. The results will look like a parodies of material given as input.
+    Available commands:<br/>
+    <b>use</b> FILENAME - specify database file to use; when used together with <b>learn</b> command, it will append learned vocabulary to file; when used together with
+    <b>write</b> command, it will use vocabulary from database file to generate text;<br/>
+    <b>learn</b> FILENAME - learn vocabulary from the text file with given name; the result of text analysis can then be saved to file or/and used immediately to generate text;
+    <br/>
+    <b>write</b> - generate text; must be used together with command <b>learn</b>, <b>use</b> or both.<br/><br/>
+    Examples:<br/>
+    <i>$ bin/shaney learn teksty.txt write</i><br/>
+    Analyse vocabulary from file teksty.txt and generate paragraph of text with similar style.
+    <br/><br/>
+    <i>$ bin/shaney use baza.db learn teksty.txt</i><br/>
+    Analyse vocabulary from file teksty.txt and save analysis result to file baza.db. If the file aleady exists, the results will be appended to existing base.
+    Otherwise, new file will be created.
+    <br/><br/>
+    <i>$ bin/shaney use baza.db write</i><br/>
+    Read vocabulary from file baza.db and use it to generate paragraph of text.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="vigenere">12. Vigenere.</a></h2>
+    <p>
+    Breaks Vigenere style cypher.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/03/03/creation/">http://programmingpraxis.com/2009/03/03/creation/</a><br/>
+    Build: make vigenere<br/>
+    Run: ./bin/vigenere FILENAME<br/>
+    <br/>
+    Program decrypts code from programmingpraxis.com page. The code is copied to file dat/code, location of which should be passed as argument for the program.
+    The code is encrypted by XORing letters of message with letters of password.
+    <br/><br/><span style="color:orange">BUG: Program is made of parts which are not logically connected within the source code.</span>
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="roman">13. Roman numerals.</a></h2>
+    <p>
+    Conversion from arabic to decimal (and vice versa) natural number representation.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/03/06/roman-numerals/">http://programmingpraxis.com/2009/03/06/roman-numerals/</a><br/>
+    Build: make roman<br/>
+    Run: ./bin/roman [NUMBER]<br/>
+    <br/>
+    Program calculates result of addition of two roman numbers: CCCLXIX + CDXLVIII. Additionally, if decimal number is provided as program command line argument
+    it will be converted to roman number and printed out.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="words">14. Word frequencies.</a></h2>
+    <p>
+    Finds N most frequent words in text file.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/03/10/word-frequencies/">http://programmingpraxis.com/2009/03/10/word-frequencies/</a><br/>
+    Build: make words<br/>
+    Run: ./bin/words FILENAME NUMBER<br/>
+    <br/>
+    Program counts how many times each word appears in text file and prints the most frequent words. Program takes two arguments, name of file to analyse
+    and number of words to write on the screen.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="friday">15. Friday, the Thirteenth.</a></h2>
+    <p>
+    Finds how many times there will be a Friday 13th in the next 10 years.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/03/13/friday-the-thirteenth/">http://programmingpraxis.com/2009/03/13/friday-the-thirteenth/</a><br/>
+    Build: make friday<br/>
+    Run: ./bin/friday<br/>
+    <br/>
+    Upon execution, program will check current date, and check how many times there will be Friday the 13th in
+    the period of 10 years since (but excluding) today. The dates and number of occurrences will be printed as output.
+    <br/><br/><span style="color:orange">The program uses library functions for calculating dates. One might say, that
+    the point of exercise was to implement own way of calculating dates.</span>
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="csv">16. Comma-Separated Values.</a></h2>
+    <p>
+    Reads text files in CSV format.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/03/17/comma-separated-values/">http://programmingpraxis.com/2009/03/17/comma-separated-values/</a><br/>
+    Build: make csv<br/>
+    Run: ./bin/csv FILENAME<br/>
+    <br/>
+    Program is able to read text files with data formatted into records and fields using CSV format. End of line (UNIX or DOS) is used to separate records (rows),
+    commas are used to separate fields (cells). Additionally double quotes can be used to encapsulate special characters inside cell. Path to input file needs to
+    be given as program argument. Example input file is given in dat/csv.txt. Program produces HTML output.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="dodgson">17. Dodgson's Doublets.</a></h2>
+    <p>
+    Solves word puzzle - finds link between two words by changing one letter in each step.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/03/20/dodgsons-doublets/">http://programmingpraxis.com/2009/03/20/dodgsons-doublets/</a><br/>
+    Build: make dodgson<br/>
+    Run: ./bin/dodgson WORD_A WORD_B<br/>
+    <br/>
+    Program solves "Dodgson's Doublets" puzzle. As input it takes two common English words of the same length and then
+    tries to find link between them using other words. The link's elements must be English words that differ from neighbours by
+    one letter only. Example (used by puzzle author himself): link between HEAD and TAIL, has one solution as follows:<br/>
+    HEAD -&gt; heal -&gt; teal -&gt; tell -&gt; tall -&gt; TAIL<br/>
+    The input words have to be supplied as command line arguments. The solution, if found, will be printed as output.<br/>
+    <br/><span style="color:orange">BUG: Links are excessively long.</span>
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="chop">18. Binary Chop.</a></h2>
+    <p>
+    Implementation of search algorithm for tables with non-descending order of elements.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/03/23/binary-search/">http://programmingpraxis.com/2009/03/23/binary-search/</a><br/>
+    Build: make chop<br/>
+    Run: ./bin/chop<br/>
+    <br/>
+    The program implements simple algorithm (binary chop / binary search) for finding numeric values in array of elements
+    which are known to have non-descending order.
+    Upon execution program will test itself, by searching for elements in tables which
+    are predefined (routine one) and randomly generated (routine two).
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="turing">19. Turing Machine Simulator.</a></h2>
+    <p>
+    Simulation of Turing-like machine.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/03/27/a-turing-machine-simulator/">http://programmingpraxis.com/2009/03/27/a-turing-machine-simulator/</a><br/>
+    Build: make turing<br/>
+    Run: ./bin/turing TAPE_FILE CODE_FILE<br/>
+    <br/>
+    The program takes as input two files: one has initial contents of Turing machine tape;
+    the other has Turing machine code in form of transition table.<br/>
+    The tape file is a text file, with contents of tape cells separated by whitespaces.
+    Special 'blank' symbol is written as underscore (_). Initial position of Turing machine
+    pointer (rw head) has to be specified using square braces e.g. <pre>_ [1] 1 0 </pre>
+    Example tape file can be found in dat/turingTape.<br/>
+    The code file has to contain table of transitions. Each transition is made of 5 elements separated by
+    whitespaces: (1) current state, (2) symbol which was read, (3) symbol to write,
+    (4) move direction, (5) next state to enter. The states (1, 5) must be integer numbers.
+    Symbols (2, 3) are arbitrary ASCII characters.
+    Direction (4) must be either 'R' (move pointer right) or 'L' (move pointer left).<br/>
+    Example code file can be found in dat/turingCode.<br/>
+    Machine starts in state 0. In each step it looks into transition table to find what
+    should be done in current situation (state and symbol at pointer). When state becomes
+    a negative number, machine will stop.<br/>
+    Program outputs a final contents of tape.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="railfence">20. Rail-Fence cipher.</a></h2>
+    <p>
+    Encrypts and decrypts text using rail-fence cipher.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/03/31/rail-fence-cipher/">http://programmingpraxis.com/2009/03/31/rail-fence-cipher/</a><br/>
+    Build: make railfence<br/>
+    Run: ./bin/railfence COMMAND FILE<br/>
+    <br/>
+    Program encrypts or decrypts text using rail-fence cipther with the key = 4. It takes two command line
+    arguments as input: command and path to the file. Possible commands:<br/>
+    <i>encrypt</i> - read file given as second argument and print encrypted contents to standard output.<br/>
+    <i>decrypt</i> - read file given as second argument and print decrypted contents to standard output.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="multiply">21. Multiplication on Turing Machine.</a></h2>
+    <p>
+    Program for Turing machine simulator from exercise 19.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/04/03/programming-the-turing-machine/">http://programmingpraxis.com/2009/04/03/programming-the-turing-machine/</a><br/>
+    Build: make turing<br/>
+    Run: ./bin/turing dat/multiplyTape dat/multiplyCode<br/>
+    <br/>
+    The exercise is not a separate C program, but a program for Turing machine simulator created for <a href="#turing">exercise 19</a>. The code performs multiplication of two
+    natural numbers, larger or equal 1. Machine code (transition table) is in file dat/multiplyCode. Example initial tape: dat/multiplyTape.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="pancake">22. Pancake-flipping sorting.</a></h2>
+    <p>
+    Implementation of pancake flipping algorithm for sorting integers.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/04/07/flipping-pancakes/">http://programmingpraxis.com/2009/04/07/flipping-pancakes/</a><br/>
+    Build: make pancake<br/>
+    Run: ./bin/pancake<br/>
+    <br/>
+    The program implements sorting algorithm which repeatedly replaces order of first N number of elements in the input table until table is sorted in ascending order.
+    When program is run, the algorithm is demonstrated on three examples. For each example, program will print initial state of table, all steps of algorithm and final state
+    of the table.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="anagram">23. Anagram finder.</a></h2>
+    <p>
+    Finds anagrams for given word. Finds maximal number of anagrams in dictionary.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/04/10/anagrams/">http://programmingpraxis.com/2009/04/10/anagrams/</a><br/>
+    Build: make anagram<br/>
+    Run: ./bin/anagram WORD<br/>
+    <br/>
+    Program reads list of English words located at dat/words.txt and uses it to find anagrams to the
+    word given by user as single command line argument. Additionally program will find maximal number
+    of anagrams in dictionary.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="primes">24. Primes puzzle.</a></h2>
+    <p>
+    Google Treasure Hunt 2008 Puzzle 4 resolution.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/04/14/google-treasure-hunt-2008-puzzle-4/">http://programmingpraxis.com/2009/04/14/google-treasure-hunt-2008-puzzle-4/</a><br/>
+    Build: make primes<br/>
+    Run: ./bin/primes<br/>
+    <br/>
+    The programs tries to find a prime number which is the smallest sum of 541 consecutive primes and also
+    a sum of 41, 17 and 7 consecutive primes. Upon execution program will print result as output.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="spellcheck">25. Spell-check.</a></h2>
+    <p>
+    Simple spell checker.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/04/17/spell-checking/">http://programmingpraxis.com/2009/04/17/spell-checking/</a><br/>
+    Build: make spellcheck<br/>
+    Run: ./bin/spellcheck FILENAME<br/>
+    <br/>
+    Simple spell checker. Checks if words from file given as argument, exist in dictionary.
+    The dictionary is read from file dat/words.txt.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="bloomspell">26. Bloom filter spell checker.</a></h2>
+    <p>
+    Spell checker using Bloom filter algorithm.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/04/21/probabilistic-spell-checking/">http://programmingpraxis.com/2009/04/21/probabilistic-spell-checking/</a><br/>
+    Build: make bloomspell<br/>
+    Run: ./bin/bloomspell FILENAME<br/>
+    <br/>
+    Spell checker. Checks if words from file given as argument, exist in dictionary.
+    The dictionary is read from file dat/words.txt.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="hyphen">27. Hyphenation.</a></h2>
+    <p>
+    Implementation of algorithm for word hyphenation.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/04/24/word-hy-phen-a-tion-by-com-pu-ter/">http://programmingpraxis.com/2009/04/24/word-hy-phen-a-tion-by-com-pu-ter/</a><br/>
+    Build: make hyphen<br/>
+    Run: ./bin/hyphen WORD<br/>
+    <br/>
+    Program determines possible hyphenation spaces for a lower-case word given as an argument.
+    Algorithm is based on dictionary of hyphenation patterns stored in dat/hyphens and dictionary
+    of exceptions stored in dat/exceptions.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="morse">28. Morse Code.</a></h2>
+    <p>
+    Translates text to morse code and vice-versa.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/04/28/morse-code/">http://programmingpraxis.com/2009/04/28/morse-code/</a><br/>
+    Build: make morse<br/>
+    Run: ./bin/morse encode|decode<br/>
+    <br/>
+    Program translates characters written to standard input. If <i>encode</i> option is given
+    as execution argument, input is expected to be latin characters or digits which will be converted
+    to dots and dashes. Unsupported characters will be echoed without change.<br/>
+    If <i>decode</i> option is given as execution argument, input is expected to be
+    Morse code: dots and dashes with single space as symbol delimiter. Code will
+    be translated to latin characters and digits.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="primality">29. Primality checking.</a></h2>
+    <p>
+    Implementation of Rabin-Miller algorithm.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/05/01/primality-checking/">http://programmingpraxis.com/2009/05/01/primality-checking/</a><br/>
+    Build: make primality<br/>
+    Run: ./bin/primality<br/>
+    <br/>
+    Program checks if number 618970019642690137449562111 is a prime.
+    <br/><span style="color:orange">Compatibility issue: The program uses 64 bit only
+    GCC extension to operate on 128 bit numbers in a lazy way.</span>
+    <br/><span style="color:red">BUG: The program gives wrong results. There is another
+    implementation written in Python (src/primality.py) which does better.</span>
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="pqueue">30. Priority queue.</a></h2>
+    <p>
+    Implementation of priority queue.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/05/05/priority-queues/">http://programmingpraxis.com/2009/05/05/priority-queues/</a><br/>
+    Build: make pqueue<br/>
+    Run: ./bin/pqueue<br/>
+    <br/>
+    Priority queue implementatation based on leftist tree.
+    Program creates priority queue and tests it by using it to sort several numbers.
+    Program will print to standard output: (1) view of the tree used to store queue elements,
+    (2) all elements popped from the queue.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="wfactor">31. Wheel factorization.</a></h2>
+    <p>
+    Number factorization using two methods.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/05/08/wheel-factorization/">http://programmingpraxis.com/2009/05/08/wheel-factorization/</a><br/>
+    Build: make wfactor<br/>
+    Run: ./bin/wfactor<br/>
+    <br/>
+    Program finds factors of number 600851475143 and prints them on the console.
+    Two methods are used, one after the other: trivial algorithm and wheel factorization.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="loan">32. Loan amortization.</a></h2>
+    <p>
+    Loan amortization calculator.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/05/12/loan-amortization/">http://programmingpraxis.com/2009/05/12/loan-amortization/</a><br/>
+    Build: make loan<br/>
+    Run: ./bin/loan<br/>
+    <br/>
+    Calculates and prints amortization table for 3-year 10000$ loan with 7% yearly rate.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="automata">33. Cellular Automata.</a></h2>
+    <p>
+    Elementary cellular automata.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/04/28/morse-code/">http://programmingpraxis.com/2009/04/28/morse-code/</a><br/>
+    Build: make automata<br/>
+    Run: ./bin/automata RULE ROWS<br/>
+    <br/>
+    Creates a snapshot of one-dimensional, elemental cellular automata with the given
+    length and automata rule. The RULE argument must be an integer from 0 to 255.
+    The ROWS argument represents number of lines (apart from initial one) that will
+    be printed by application to show subsequent steps of automata.
+    The initial state of automata is an empty line with single filled cell at the middle.
+    <br/>Example usage:<br/>
+    ./bin/automata 158 12<br/>
+    ./bin/automata 18  34<br/>
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="fermat">34. Fermat's factorization.</a></h2>
+    <p>
+    Finds prime factors of positive integer number using Fermat's algorithm.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/05/19/fermats-method/">http://programmingpraxis.com/2009/05/19/fermats-method/</a><br/>
+    Build: make fermat<br/>
+    Run: ./bin/fermat NUMBER<br/>
+    <br/>
+    The program accepts single command line argument: integer higher than one. Program is limited to the range of C integer type (2^31 - 1).
+    Program will write factors of given number to the console.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="palindrome">35. Palindromic number finder.</a></h2>
+    <p>
+    Program finds palindromic number larger than given as argument.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/05/22/the-next-palindrome/">http://programmingpraxis.com/2009/05/22/the-next-palindrome/</a><br/>
+    Build: make palindrome<br/>
+    Run: ./bin/palindrome NUMBER<br/>
+    <br/>
+    The program tries to find the smallest integer that is larger than given argument and which decimal representation reads the same from left to right as
+    from right to left. Input number is specified as command line argument and must be a positive integer written in decimal form with no more than 1000 digits.
+    Leading zeros are ignored. The result is printed as standard output.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="wsearch">36. Word search solver.</a></h2>
+    <p>
+    Solves grid-of-letters, word-search puzzles.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/05/26/word-search-solver/">http://programmingpraxis.com/2009/05/26/word-search-solver/</a><br/>
+    Build: make wsearch<br/>
+    Run: ./bin/wsearch FILE WORD1 [WORD2 [...]]<br/>
+    <br/>
+    Tries to find specific words in the grid of letters. The words can be written forward, backward, up, down or diagonally. The grid must be given as text file
+    whose location is given as first command line argument. In the file all whitespaces are ignored except end-of-line characters which determine end of the
+    row in the grid. For example puzzle file, see: <i>dat/spuzzle.txt</i>. Words to search for, are specified as remaining command line arguments.<br/>
+    Example usage:<br/>
+    ./bin/wsearch dat/spuzzle.txt ITALY HOLLAND POLAND SPAIN FRANCE JAPAN TOGO PERU
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="columnar">37. Double transposition cipher.</a></h2>
+    <p>
+    Encrypts or decrypts text using two-pass of columnar cipher.<br/>
+    Inspiration: <a href="http://programmingpraxis.com/2009/05/29/double-transposition-cipher/">http://programmingpraxis.com/2009/05/29/double-transposition-cipher/</a><br/>
+    Build: make columnar<br/>
+    Run: ./bin/columnar encrypt|decrypt PWD1 PWD2<br/>
+    <br/>
+    The program allows to encrypt the text using columnar cipher twice: first time with PWD1 password, second time with PWD2 password (the result is harder to break
+    than single pass of the cipher, especially if password lengths are different). The program also allows to decipher the text. In this case it is important
+    to remember that the passwords should be used in reversed order than during the encryption.<br/>
+    Program takes three command line arguments: first one chooses operation mode (encrypt for encryption, decrypt for decryption); second and third are the passwords
+    to use. For example<br/>
+    ./bin/columnar encrypt ciap kotlet<br/>
+    ./bin/columnar decrypt kotlet ciap<br/>
+    Notice that the second execution is able to decrypt text encoded during first execution.<br/>
+    During execution program will accept text given as standard input and encrypting/decrypting it line by line.
+    Type Ctrl + D (EOF) to exit.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="piglatin">38. Pig latin.</a></h2>
+    <p>
+    Mangles words using the rules of children game &quot;pig-latin&quot;.<br/>
+    Inspiration: <a href="https://programmingpraxis.com/2009/06/02/pig-latin/">https://programmingpraxis.com/2009/06/02/pig-latin/</a><br/>
+    Build: make piglatin<br/>
+    Run: ./bin/piglatin encode|decode<br/>
+    <br/>
+    The program mangles or unmangles the words given to standard input by applying the rules for chldren English language game &quot;pig-latin&quot;.<br/>
+    If <i>encode</i> is passed as a first argument, the program will try to translate each word passed to standard input into pig latin.
+    If the word starts with a vowel, then syllabe -ay is added to the end of word. If the word starts with cosonant, then the beginning cosonants are moved
+    to the back of the word together with syllabe -ay.<br/>
+    In <i>decode</i> mode, program will try to reverse the operation - translate pig latin back to English.<br/>
+    Type Ctrl + D (EOF) to exit.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="tenarytree">39. Tenary Search Tree.</a></h2>
+    <p>
+    Demonstration implementation of Tenary Search Tree algorithm.<br/>
+    Inspiration: <a href="https://programmingpraxis.com/2009/06/05/ternary-search-tries/">https://programmingpraxis.com/2009/06/05/ternary-search-tries/</a><br/>
+    Build: make tenarytree<br/>
+    Run: ./bin/tenarytree [FILENAME]<br/>
+    <br/>
+    Program reads text file which name was passed as parameter and prints out all unique words together with number of apperances in input text. If no file name is passed
+    as an argument, then program reads from standard input.<br/>
+    Internally program uses tenary tree for storage and lookup.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="lcs">40. Longest Common Subsequence.</a></h2>
+    <p>
+    Finds longest common subsequence between two words.<br/>
+    Inspiration: <a href="https://programmingpraxis.com/2009/06/09/longest-common-subsequence/">https://programmingpraxis.com/2009/06/09/longest-common-subsequence/</a><br/>
+    Build: make lcs<br/>
+    Run: ./bin/lcs<br/>
+    <br/>
+    Program finds longest common subsequence in two words that are passed to standard input and delimited with end of the line.
+    </p>
+    <a href="#top">Go back to the top</a>
+
+    <h2><a name="feynmann">41. Feynmann's puzzle.</a></h2>
+    <p>
+    Solves long division puzzle, supposedly originally proposed by Richard Feynmann.<br/>
+    Inspiration: <a href="https://programmingpraxis.com/2009/06/12/feynmans-puzzle/">https://programmingpraxis.com/2009/06/12/feynmans-puzzle/</a><br/>
+    Build: make feynmann<br/>
+    Run: ./bin/feynmann<br/>
+    <br/>
+    Program tries to find the hidden figures in given long-division example:<br/>
+    <pre>
+             xxAx
+          --------
+          xxxxAxx / xAx
+          xxAA
+         ---------
+          xxxA
+           xxA
+         --------
+           xxxx
+           xAxx
+         --------
+            xxxx
+            xxxx
+           ------
+            = =
+    </pre>
+    where every A is the same digit and every x is any digit (but never the same as A).
+    </p>
+    <a href="#top">Go back to the top</a>
+
+  </body>
+</html>

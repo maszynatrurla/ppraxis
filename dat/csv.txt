@@ -1,0 +1,17 @@
+1,abc,def ghi,jkl,unquoted character strings
+2,"abc","def ghi","jkl",quoted character strings
+3,123,456,789,numbers
+4, abc,def , ghi ,strings with whitespace
+5, "abc","def" , "ghi" ,quoted strings with whitespace
+6, 123,456 , 789 ,numbers with whitespace
+7,TAB123,456TAB,TAB789TAB,numbers with tabs for whitespace
+8, -123, +456, 1E3,more numbers with whitespace
+9,123 456,123"456, 123 456 ,strange numbers
+10,abc",de"f,g"hi,embedded quotes
+11,"abc""","de""f","g""hi",quoted embedded quotes
+12,"","" "",""x"",doubled quotes
+13,"abc"def,abc"def","abc" "def",strange quotes
+14,,"", ,empty fields
+15,abc,"def
+ghi",jkl,embedded newline
+16,abc,"def",789,multiple types of fields
