@@ -1,6 +1,6 @@
 # Programming Praxis in C
 
-Several years ago I made several exercises from page
+Several years ago I did some exercises from page
 http://programmingpraxis.com
 
 I used C programming language, as that was what I was using at work.
